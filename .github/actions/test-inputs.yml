@@ -5,9 +5,7 @@ inputs:
 
   test-list:
     description: 'Test list input of Actions'
-    default:
-      - first: 'Value One'
-      - second: 'Value Two'
+    default: ['Value One', 'Value Two']
 
   test-dictionary:
     description: 'Test dictionary input of Actions'

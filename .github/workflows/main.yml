@@ -9,9 +9,10 @@ jobs:
       - uses: ./.github/actions/test-inputs
         with:
           test-string: 'Ham Fan?'
-          test-list:
-            - A_One: 'Missed'
-            - H_Two: 'Hit and Sunk!'
+          test-list: ['first', 2, 'IIV']
+          # Lists are not supported with `with` via following?
+          #   - A_One: 'Missed'
+          #   - H_Two: 'Hit and Sunk!'
           test-dictionary:
             first_key: 'Value 1'
             second_key: 2
