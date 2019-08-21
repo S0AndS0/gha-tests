@@ -7,8 +7,8 @@ inputs:
   #   description: 'Test list input of Actions'
   #   default: ['Value One', 'Value Two']
 
-  test-dictionary:
-    description: 'Test dictionary input of Actions'
-    default:
-      key_one: 'First Value'
-      key_two: 'Second Value'
+  # test-dictionary:
+  #   description: 'Test dictionary input of Actions'
+  #   default:
+  #     key_one: 'First Value'
+  #     key_two: 'Second Value'

@@ -9,13 +9,14 @@ jobs:
       - uses: ./.github/actions/test-inputs
         with:
           test-string: 'Ham Fan?'
-          # Lists are not supported with `with` via either of following?
+          ## Lists are not supported with `with` via either of following?
           # test-list: ['first', 2, 'IIV']
           #   - A_One: 'Missed'
           #   - H_Two: 'Hit and Sunk!'
-          test-dictionary:
-            first_key: 'Value 1'
-            second_key: 2
+          ## ... Nore are dictionaries...
+          # test-dictionary:
+          #   first_key: 'Value 1'
+          #   second_key: 2
 
       - name: Test string input
         env:
@@ -27,10 +28,10 @@ jobs:
       #     __test_list__: ${{ toJson(inputs.test-list) }}
       #   run: printf '%s\n' "${__test_list__}"
 
-      - name: Test dictionary input
-        env:
-          __test_dictionary__: ${{ toJson(inputs.test-dictionary) }}
-        run: printf '%s\n' "${__test_dictionary__}"
+      # - name: Test dictionary input
+      #   env:
+      #     __test_dictionary__: ${{ toJson(inputs.test-dictionary) }}
+      #   run: printf '%s\n' "${__test_dictionary__}"
 
 
 ## Thanks_be_to
