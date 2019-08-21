@@ -3,9 +3,9 @@ inputs:
     description: 'Test string input of Actions'
     default: 'Spam Slam'
 
-  test-list:
-    description: 'Test list input of Actions'
-    default: ['Value One', 'Value Two']
+  # test-list:
+  #   description: 'Test list input of Actions'
+  #   default: ['Value One', 'Value Two']
 
   test-dictionary:
     description: 'Test dictionary input of Actions'
