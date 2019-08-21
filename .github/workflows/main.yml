@@ -1,33 +1,37 @@
 on: push
 
+
+
 jobs:
   one:
     runs-on: ubuntu-16.04
     steps:
-      - name: Dump GitHub context
+      - uses: ./.github/actions/test-inputs
+        with:
+          test-string: 'Ham Fan?'
+          test-list:
+            - A_One: 'Missed'
+            - H_Two: 'Hit and Sunk!'
+          test-dictionary:
+            first_key: 'Value 1'
+            second_key: 2
+
+      - name: Test string input
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: Dump strategy context
+          __test_string__: ${{ toJson(inputs.test-string) }}
+        run: printf '%s\n' "${__test_string__}"
+
+      - name: Test list input
         env:
-          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
-      - name: Dump matrix context
+          __test_list__: ${{ toJson(inputs.test-list) }}
+        run: printf '%s\n' "${__test_list__}"
+
+      - name: Test dictionary input
         env:
-          MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
+          __test_dictionary__: ${{ toJson(inputs.test-dictionary) }}
+        run: printf '%s\n' "${__test_dictionary__}"
 
 
-## Thanks be to - https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions
+## Thanks_be_to
+##   - https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions
+##   - https://help.github.com/en/articles/metadata-syntax-for-github-actions#inputs

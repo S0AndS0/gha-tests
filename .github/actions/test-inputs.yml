@@ -1,0 +1,16 @@
+inputs:
+  test-string:
+    description: 'Test string input of Actions'
+    default: 'Spam Slam'
+
+  test-list:
+    description: 'Test list input of Actions'
+    default:
+      - first: 'Value One'
+      - second: 'Value Two'
+
+  test-dictionary:
+    description: 'Test dictionary input of Actions'
+    default:
+      key_one: 'First Value'
+      key_two: 'Second Value'
