@@ -1,5 +1,3 @@
-const env = process.env;
-
 console.log('process.env...');
 console.table(process.env);
 
