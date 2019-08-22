@@ -7,13 +7,10 @@ inputs:
     default: 'Spam Slam'
     required: true
 
-runs:
-  env:
-    __test_string__: ${{ toJson(inputs.test-string) }}
+runs: printf '%s' "${{ toJson(inputs.test-string) }}"
 
-jobs:
-  test-string:
-    runs-on: ubuntu-16.04
-    steps:
-      - name: String Inputs Tests
-        run: printf '%s\n' "${__test_string__}"
+env:
+  __test_string__: ${{ toJson(inputs.test-string) }}
+
+using: 'node12'
+main: lib/test-env-inputs.js
