@@ -6,7 +6,7 @@ jobs:
   one:
     runs-on: ubuntu-16.04
     steps:
-      - uses: ./.github/actions/test-inputs
+      - uses: ./.github/actions/test-inputs@master
         with:
           test-string: 'Ham Fan?'
           ## Lists are not supported with `with` via either of following?
@@ -16,7 +16,7 @@ jobs:
           ## ... Nore are dictionaries...
           # test-dictionary:
           #   first_key: 'Value 1'
-          #   second_key: 2      
+          #   second_key: 2
 
 
 ## Thanks_be_to
