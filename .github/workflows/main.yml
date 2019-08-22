@@ -8,7 +8,7 @@ jobs:
       - name: First tests
         uses: S0AndS0/gha-tests/.github/actions/test-inputs@master
         with:
-          test-string: 'Ham Fan?'
+          test_string: 'Ham Fan?'
 
 
 ## Thanks_be_to
