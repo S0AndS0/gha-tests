@@ -7,30 +7,8 @@ inputs:
     default: 'Spam Slam'
     required: true
 
-  # test-list:
-  #   description: 'Test list input of Actions'
-  #   default: ['Value One', 'Value Two']
-
-  # test-dictionary:
-  #   description: 'Test dictionary input of Actions'
-  #   default:
-  #     key_one: 'First Value'
-  #     key_two: 'Second Value'
-
 runs:
-    name: Test string input
-    # using: 'docker'
-    # image: 'docker://debian:stetch-slim'
+    using: 'bash'
     env:
       __test_string__: ${{ toJson(inputs.test-string) }}
-    run: printf '%s\n' "${__test_string__}"
-
-  # - name: Test list input
-  #   env:
-  #     __test_list__: ${{ toJson(inputs.test-list) }}
-  #   run: printf '%s\n' "${__test_list__}"
-  #
-  # - name: Test dictionary input
-  #   env:
-  #     __test_dictionary__: ${{ toJson(inputs.test-dictionary) }}
-  #   run: printf '%s\n' "${__test_dictionary__}"
+    main: printf '%s\n' "${__test_string__}"
