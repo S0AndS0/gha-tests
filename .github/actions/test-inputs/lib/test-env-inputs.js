@@ -1,5 +1,6 @@
 const env = process.env;
 
-console.log(`process.env -> ${process.env}`);
+console.log('process.env...');
+console.table(process.env);
 
-console.log(`process.env.test_string -> ${process.env.test_string}`);
+console.log(`process.env.test_string -> ${process.env.INPUT_TEST_STRING}`);
