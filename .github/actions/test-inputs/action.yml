@@ -7,8 +7,7 @@ inputs:
     default: 'Spam Slam'
     required: true
 
-# runs:
+runs:
+  using: 'node12'
+  main: lib/test-env-inputs.js
 #   plugin: 'checkout'
-
-using: 'node12'
-main: lib/test-env-inputs.js
