@@ -2,16 +2,13 @@ name: 'Test Inputs'
 description: 'Tests GitHub Actions inputs parsing options'
 
 inputs:
-  test-string:
+  test_string:
     description: 'Test string input of Actions'
     default: 'Spam Slam'
     required: true
 
-env:
-  __test_string__: ${{ toJson(test-string) }}
-
-runs:
-  plugin: 'checkout'
+# runs:
+#   plugin: 'checkout'
 
 using: 'node12'
 main: lib/test-env-inputs.js

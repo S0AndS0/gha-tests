@@ -1,3 +1,4 @@
-const env = process.env
-const test_string = env.__test_string__
-console.log(`test_string -> ${test_string}`)
+const env = process.env;
+const test_strings = [];
+test_strings.push(env.test_string);
+console.tabel(test_strings)
