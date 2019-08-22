@@ -18,7 +18,7 @@ inputs:
   #     key_two: 'Second Value'
 
 runs:
-  - name: Test string input
+    name: Test string input
     # using: 'docker'
     # image: 'docker://debian:stetch-slim'
     env:
