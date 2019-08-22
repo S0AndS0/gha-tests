@@ -1,7 +1,11 @@
+name: 'Test Inputs'
+description: 'Tests GitHub Actions inputs parsing options'
+
 inputs:
   test-string:
     description: 'Test string input of Actions'
     default: 'Spam Slam'
+    required: true
 
   # test-list:
   #   description: 'Test list input of Actions'
@@ -15,6 +19,8 @@ inputs:
 
 runs:
   - name: Test string input
+    # using: 'docker'
+    # image: 'docker://debian:stetch-slim'
     env:
       __test_string__: ${{ toJson(inputs.test-string) }}
     run: printf '%s\n' "${__test_string__}"
