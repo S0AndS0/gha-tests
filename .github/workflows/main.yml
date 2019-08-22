@@ -7,7 +7,9 @@ jobs:
     runs-on: ubuntu-16.04
     steps:
       # - uses: ./.github/actions/test-inputs@master
-      - uses: ./.github/actions/test-inputs
+      - name: First tests
+        uses: S0AndS0/gha-actions/.github/actions/test-inputs@master
+        # uses: ./.github/actions/test-inputs
         with:
           test-string: 'Ham Fan?'
           ## Lists are not supported with `with` via either of following?
