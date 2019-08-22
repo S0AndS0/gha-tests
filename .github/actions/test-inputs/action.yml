@@ -8,7 +8,10 @@ inputs:
     required: true
 
 runs:
-    using: 'bash'
-    env:
-      __test_string__: ${{ toJson(inputs.test-string) }}
-    main: printf '%s\n' "${__test_string__}"
+  using: 'bash'
+  env:
+    __test_string__: ${{ toJson(inputs.test-string) }}
+  # main: printf '%s\n' "${__test_string__}"
+
+outputs:
+  printed-string: printf '%s\n' "${__test_string__}"
