@@ -10,6 +10,10 @@ jobs:
         with:
           test_string: 'Ham Fan?'
 
+      - name: Second tests
+        uses: S0AndS0/gha-tests/.github/actions/docker-tsc@master
+        with:
+          test_string: 'Spam Cheese!'
 
 ## Thanks_be_to
 ##   - https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions
