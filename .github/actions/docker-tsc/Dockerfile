@@ -27,4 +27,4 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT ["/bin/bash"]
-CMD ["test-env-inputs.sh"]
+CMD ["/test-env-inputs.sh"]
