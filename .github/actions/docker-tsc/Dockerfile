@@ -8,7 +8,7 @@ LABEL "com.github.S0AndS0.name"="TypeScript Builder"
 LABEL "com.github.S0AndS0.description"="Action for TypeScript transpiling"
 LABEL "com.github.S0AndS0.icon"="tool"
 LABEL "com.github.S0AndS0.color"="gray-dark"
-COPY .github/actions/docker-tsc/lib/test-env-inputs.sh /
+COPY lib/test-env-inputs.sh /
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
