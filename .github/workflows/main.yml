@@ -20,7 +20,7 @@ jobs:
       - name: Compile main.css from main.scss
         uses: scss-utilities/gha-sass@master
         with:
-          repository_name: your-repository
+          repository_name: gha-tests
           sass_source: _scss/main.scss
           sass_destination: assets/css/main.css
 
