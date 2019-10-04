@@ -2,18 +2,26 @@ on: push
 
 
 jobs:
-  one:
-    runs-on: ubuntu-16.04
+  # one:
+  #   runs-on: ubuntu-16.04
+  #   steps:
+  #     - name: First tests
+  #       uses: S0AndS0/gha-tests/.github/actions/test-inputs@master
+  #       with:
+  #         test_string: 'Ham Fan?'
+  #
+  #     - name: Second tests
+  #       uses: S0AndS0/gha-tests/.github/actions/docker-tsc@master
+  #       with:
+  #         test_string: 'Spam Cheese!'
+  build_css:
     steps:
-      - name: First tests
-        uses: S0AndS0/gha-tests/.github/actions/test-inputs@master
+      - name: Compile main.css from main.scss
+        uses: scss-utilities/gha-sass@master
         with:
-          test_string: 'Ham Fan?'
-
-      - name: Second tests
-        uses: S0AndS0/gha-tests/.github/actions/docker-tsc@master
-        with:
-          test_string: 'Spam Cheese!'
+          repository_name: your-repository
+          sass_source: _scss/main.scss
+          sass_destination: assets/css/main.css
 
 ## Thanks_be_to
 ##   - https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions
