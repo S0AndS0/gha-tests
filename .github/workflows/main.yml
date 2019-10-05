@@ -12,6 +12,19 @@ jobs:
           sass_source: _scss/main.scss
           sass_destination: assets/css/main.css
 
+  # open_pull_request:
+  #   needs: [build_css]
+  #   steps:
+  #     - name: Open Pull Request
+  #       uses: peter-evans/create-pull-request@v1.5.0
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         COMMIT_MESSAGE: Compiles CSS from SCSS files
+  #         PULL_REQUEST_BODY: >
+  #           This pull request was auto-generated thanks to [create-pull-request](https://github.com/peter-evans/create-pull-request)
+  #
+  #           And builds CSS with Dart Sass via [scss-utilities/gha-sass](https://github.com/scss-utilities/gha-sass)
+  #
 ## Thanks_be_to
 ##   - https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions
 ##   - https://help.github.com/en/articles/metadata-syntax-for-github-actions#inputs
