@@ -2,30 +2,30 @@ on: push
 
 
 jobs:
-  test_docker_node:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Test Node on Docker
-        uses: S0AndS0/gha-tests/.github/actions/docker-node@master
-        with:
-          test_string_one: 'Test string from assigned Actions'
-        env:
-          test_action_env: 'Test Actions assigning environment variable'
-
-  # build_css:
-  #   runs-on: ubuntu-16.04
+  # test_docker_node:
+  #   runs-on: ubuntu-latest
   #   steps:
-  #     - name: Compile main.css from main.scss
-  #       uses: scss-utilities/gha-sass@master
+  #     - name: Test Node on Docker
+  #       uses: S0AndS0/gha-tests/.github/actions/docker-node@master
   #       with:
-  #         repository_name: gha-tests
-  #         sass_source: _scss/main.scss
-  #         sass_destination: assets/css/main.css
+  #         test_string_one: 'Test string from assigned Actions'
   #       env:
-  #         GITHUB_WORKSPACE: ${{ github.GITHUB_WORKSPACE }}
-  #         INPUT_REPOSITORY_NAME: gha-tests
-  #         INPUT_SASS_SOURCE: _scss/main.scss
-  #         INPUT_SASS_DESTINATION: assets/css/main.css
+  #         test_action_env: 'Test Actions assigning environment variable'
+
+  build_css:
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Compile main.css from main.scss
+        uses: scss-utilities/gha-sass@master
+        with:
+          repository_name: gha-tests
+          sass_source: _scss/main.scss
+          sass_destination: assets/css/main.css
+        env:
+          GITHUB_WORKSPACE: ${{ github.GITHUB_WORKSPACE }}
+          INPUT_REPOSITORY_NAME: gha-tests
+          INPUT_SASS_SOURCE: _scss/main.scss
+          INPUT_SASS_DESTINATION: assets/css/main.css
 
   # open_pull_request:
   #   needs: [build_css]
