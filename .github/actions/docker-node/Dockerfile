@@ -5,4 +5,4 @@ WORKDIR /workdir
 COPY main.js /workdir/
 
 ENTRYPOINT ["node"]
-CMD ["main.js"]
+CMD ["/workdir/main.js"]

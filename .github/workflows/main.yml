@@ -9,6 +9,10 @@ jobs:
         uses: S0AndS0/gha-tests/.github/actions/docker-node@master
         with:
           test_string_one: 'Test string from assigned Actions'
+        args:
+          - 'First argument assigned from Actions'
+        env:
+          test_action_env: 'Test Actions assigning environment variable'
 
   # build_css:
   #   runs-on: ubuntu-16.04
