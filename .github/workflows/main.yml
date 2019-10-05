@@ -2,25 +2,25 @@ on: push
 
 
 jobs:
-  build_css:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Compile main.css from main.scss
-        uses: scss-utilities/gha-sass@master
-        with:
-          repository_name: gha-tests
-          sass_source: _scss/main.scss
-          sass_destination: assets/css/main.css
-
-  # test_docker_node:
+  # build_css:
   #   runs-on: ubuntu-latest
   #   steps:
-  #     - name: Test Node on Docker
-  #       uses: S0AndS0/gha-tests/.github/actions/docker-node@master
+  #     - name: Compile main.css from main.scss
+  #       uses: scss-utilities/gha-sass@master
   #       with:
-  #         test_string_one: 'Test string from assigned Actions'
-  #       env:
-  #         test_action_env: 'Test Actions assigning environment variable'
+  #         repository_name: gha-tests
+  #         sass_source: _scss/main.scss
+  #         sass_destination: assets/css/main.css
+
+  test_docker_node:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test Node on Docker
+        uses: S0AndS0/gha-tests/.github/actions/docker-node@master
+        with:
+          test_string_one: 'Test string from assigned Actions'
+        env:
+          test_action_env: 'Test Actions assigning environment variable'
 
 
   # open_pull_request:
