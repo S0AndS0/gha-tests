@@ -14,6 +14,7 @@ jobs:
 
   open_pull_request:
     needs: [build_css]
+    runs-on: ubuntu-16.04
     steps:
       - name: Open Pull Request
         uses: peter-evans/create-pull-request@v1.5.0
