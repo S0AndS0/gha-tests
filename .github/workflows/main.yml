@@ -3,7 +3,7 @@ on: push
 
 jobs:
   test_docker_node:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Test Node on Docker
         uses: S0AndS0/gha-tests/.github/actions/docker-node@master
