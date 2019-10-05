@@ -12,7 +12,7 @@ jobs:
           sass_source: _scss/main.scss
           sass_destination: assets/css/main.css
         env:
-          GITHUB_WORKSPACE: ${{ GITHUB_WORKSPACE }}
+          GITHUB_WORKSPACE: ${{ github.GITHUB_WORKSPACE }}
           INPUT_REPOSITORY_NAME: gha-tests
           INPUT_SASS_SOURCE: _scss/main.scss
           INPUT_SASS_DESTINATION: assets/css/main.css
