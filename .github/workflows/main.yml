@@ -2,37 +2,35 @@ on: push
 
 
 jobs:
-  test_actions:
-    name: Test Actions
+  test_sass:
+    name: Test Dart Sass
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: [12]
 
       - name: Install Sass
         run: npm install sass
 
       - name: Make output directory
-        run: mkdir -p ./assets/css
+        run: mkdir -p assets/css
 
       - name: Run Sass
         run: node ./gha-sass.js
         env:
           INPUT_SASS_SOURCE: _scss/main.scss
           INPUT_SASS_DESTINATION: assets/css/main.css
-        # with:
-        #   repository_name: gha-tests
-        #   sass_source: _scss/main.scss
-        #   sass_destination: assets/css/main.css
 
-  # build_css:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Compile main.css from main.scss
-  #       uses: scss-utilities/gha-sass@master
-  #       with:
-  #         repository_name: gha-tests
-  #         sass_source: _scss/main.scss
-  #         sass_destination: assets/css/main.css
+  build_css:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Compile main.css from main.scss
+        uses: scss-utilities/gha-sass@master
+        with:
+          repository_name: gha-tests
+          sass_source: _scss/main.scss
+          sass_destination: assets/css/main.css
 
   # test_docker_node:
   #   runs-on: ubuntu-latest
