@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v1
         with:
-          node-version: [12]
+          node-version: 12
 
       - name: Install Sass
         run: npm install sass
