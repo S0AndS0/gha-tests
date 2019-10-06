@@ -16,10 +16,13 @@ jobs:
 
       - name: Run Sass
         run: ./gha-sass.js
-        with:
-          repository_name: gha-tests
-          sass_source: _scss/main.scss
-          sass_destination: assets/css/main.css
+        env:
+          INPUT_SASS_SOURCE: _scss/main.scss
+          INPUT_SASS_DESTINATION: assets/css/main.css
+        # with:
+        #   repository_name: gha-tests
+        #   sass_source: _scss/main.scss
+        #   sass_destination: assets/css/main.css
 
   # build_css:
   #   runs-on: ubuntu-latest
