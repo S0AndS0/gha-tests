@@ -2,25 +2,43 @@ on: push
 
 
 jobs:
-  test_sass:
-    name: Test Dart Sass
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
+  # test_actions:
+  #   name: Test Actions
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #
+  #     - name: Install Sass
+  #       run: npm install sass
+  #
+  #     - name: Make output directory
+  #       run: mkdir -p ./assets/css
+  #
+  #     - name: Run Sass
+  #       run: node ./gha-sass.js
+  #       env:
+  #         INPUT_SASS_SOURCE: _scss/main.scss
+  #         INPUT_SASS_DESTINATION: assets/css/main.css
 
-      - name: Install Sass
-        run: npm install sass
-
-      - name: Make output directory
-        run: mkdir -p assets/css
-
-      - name: Run Sass
-        run: node ./gha-sass.js
-        env:
-          INPUT_SASS_SOURCE: _scss/main.scss
-          INPUT_SASS_DESTINATION: assets/css/main.css
+  # test_sass:
+  #   name: Test Dart Sass
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #       # with:
+  #       #   node-version: 12
+  #
+  #     - name: Install Sass
+  #       run: npm install sass
+  #
+  #     - name: Make output directory
+  #       run: mkdir -p assets/css
+  #
+  #     - name: Run Sass
+  #       run: node ./gha-sass.js
+  #       env:
+  #         INPUT_SASS_SOURCE: _scss/main.scss
+  #         INPUT_SASS_DESTINATION: assets/css/main.css
 
   build_css:
     runs-on: ubuntu-latest
