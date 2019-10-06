@@ -1,0 +1,12 @@
+name: 'Docker Node Actions Tests'
+description: 'Tests Node on Docker via GitHub Actions'
+
+inputs:
+  test_string_one:
+    required: false
+    description: 'Set with a Workflow'
+    default: 'undefined'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
