@@ -15,7 +15,7 @@ jobs:
         run: mkdir -p ./assets/css
 
       - name: Run Sass
-        run: ./gha-sass.js
+        run: node ./gha-sass.js
         env:
           INPUT_SASS_SOURCE: _scss/main.scss
           INPUT_SASS_DESTINATION: assets/css/main.css
