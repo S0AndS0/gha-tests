@@ -10,10 +10,11 @@ jobs:
 
       - name: Install Dart Sass
         uses: scss-utilities/gha-sass@master
-        run: node .github/actions/docker-node/main.js
         with:
           sass_source: _scss/main.scss
           sass_destination: assets/css/main.css
+
+      - run: node .github/actions/docker-node/main.js
 
   # test_actions:
   #   name: Test Actions
