@@ -8,6 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
+      - run: mkdir -vp assets/css
+
       - name: Install Dart Sass
         uses: scss-utilities/gha-sass@master
         with:
