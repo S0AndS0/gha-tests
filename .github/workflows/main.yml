@@ -16,7 +16,7 @@ jobs:
           sass_source: _scss/main.scss
           sass_destination: assets/css/main.css
 
-      - run: node .github/actions/docker-node/main.js
+      - run: cat assets/css/main.css
 
   # test_actions:
   #   name: Test Actions
