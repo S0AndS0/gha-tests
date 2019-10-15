@@ -19,7 +19,7 @@ jobs:
         with:
           # jekyll_github_token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
           source: ./jekyll-docs
-          destination: /var/www/repository-name
+          destination: /var/www/gha-tests
 
       - name: Checkout branch for GitHub Pages
         uses: actions/checkout@v1
@@ -29,7 +29,7 @@ jobs:
           submodules: true
 
       - name: Copy built site files into Git branch
-        run: cp -r /var/www/repository-name ./
+        run: cp -r /var/www/gha-tests ./
 
       - name: Check if build processes generated anything
         run: ls -ahl ./
