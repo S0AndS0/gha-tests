@@ -14,12 +14,18 @@ jobs:
           ref: master
           fetch-depth: 10
 
+      - name: Make Jekyll Build destination directory
+        run: mkdir -vp ~/www/gha-tests
+
       - name: Jekyll Build
         uses: gha-utilities/jekyll-build@master
         with:
           # jekyll_github_token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
           source: ./jekyll-docs
-          destination: /var/www/gha-tests
+          destination: ~/www/gha-tests
+
+      - name: Check if anything was built
+        run: ls -ahl ~/www/gha-tests
 
       - name: Checkout branch for GitHub Pages
         uses: actions/checkout@v1
@@ -29,7 +35,7 @@ jobs:
           submodules: true
 
       - name: Copy built site files into Git branch
-        run: cp -r /var/www/gha-tests ./
+        run: cp -r ~/www/gha-tests ./
 
       - name: Check if build processes generated anything
         run: ls -ahl ./
