@@ -17,7 +17,7 @@ jobs:
       - name: Jekyll Build
         uses: gha-utilities/jekyll-build@master
         with:
-          jekyll_github_token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
+          # jekyll_github_token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
           source: ./jekyll-docs
           destination: /var/www/repository-name
 
