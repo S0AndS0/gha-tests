@@ -1,0 +1,27 @@
+title: GHA Tests
+description: >- # this means to ignore newlines until "baseurl:"
+  Tests of various GitHub Actions
+# baseurl: "" # the subpath of your site, e.g. /blog
+# url: 'https://s0ands0.github.io'
+author: S0AndS0
+twitter_username: S0_And_S0
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  # - jekyll-github-metadata
+
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

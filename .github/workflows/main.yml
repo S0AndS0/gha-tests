@@ -1,95 +1,47 @@
-on: push
-
+on:
+  push:
+    - master
 
 jobs:
-  build_css:
+  jekyll_build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@master
-
-      - run: mkdir -vp assets/css
-
-      - name: Install Dart Sass
-        uses: scss-utilities/gha-sass@master
+      - name: Checkout source branch for building Pages
+        uses: actions/checkout@v1
         with:
-          sass_source: _scss/main.scss
-          sass_destination: assets/css/main.css
+          ref: master
+          fetch-depth: 10
 
-      - run: cat assets/css/main.css
+      - name: Jekyll Build
+        uses: gha-utilities/jekyll-build@master
+        with:
+          jekyll_github_token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
+          source: ./jekyll-docs
+          destination: /var/www/repository-name
 
-  # test_actions:
-  #   name: Test Actions
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v1
-  #
-  #     - name: Install Sass
-  #       run: npm install sass
-  #
-  #     - name: Make output directory
-  #       run: mkdir -p ./assets/css
-  #
-  #     - name: Run Sass
-  #       run: node ./gha-sass.js
-  #       env:
-  #         INPUT_SASS_SOURCE: _scss/main.scss
-  #         INPUT_SASS_DESTINATION: assets/css/main.css
+      - name: Checkout branch for GitHub Pages
+        uses: actions/checkout@v1
+        with:
+          ref: gh-pages
+          fetch-depth: 1
+          submodules: true
 
-  # test_sass:
-  #   name: Test Dart Sass
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v1
-  #       # with:
-  #       #   node-version: 12
-  #
-  #     - name: Install Sass
-  #       run: npm install sass
-  #
-  #     - name: Make output directory
-  #       run: mkdir -p assets/css
-  #
-  #     - name: Run Sass
-  #       run: node ./gha-sass.js
-  #       env:
-  #         INPUT_SASS_SOURCE: _scss/main.scss
-  #         INPUT_SASS_DESTINATION: assets/css/main.css
+      - name: Copy built site files into Git branch
+        run: cp -r /var/www/repository-name ./
 
-  # build_css:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Compile main.css from main.scss
-  #       uses: scss-utilities/gha-sass@master
-  #       with:
-  #         repository_name: gha-tests
-  #         sass_source: _scss/main.scss
-  #         sass_destination: assets/css/main.css
+      - name: Check if build processes generated anything
+        run: ls -ahl ./
 
-  # test_docker_node:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Test Node on Docker
-  #       uses: S0AndS0/gha-tests/.github/actions/docker-node@master
-  #       with:
-  #         test_string_one: 'Test string from assigned Actions'
-  #       env:
-  #         test_action_env: 'Test Actions assigning environment variable'
-
-
-  # open_pull_request:
-  #   needs: [build_css]
-  #   runs-on: ubuntu-16.04
-  #   steps:
-  #     - name: Open Pull Request
-  #       uses: peter-evans/create-pull-request@v1.5.0
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #         COMMIT_MESSAGE: Compiles CSS from SCSS files
-  #         PULL_REQUEST_BODY: >
-  #           This pull request was auto-generated thanks to [create-pull-request](https://github.com/peter-evans/create-pull-request)
-  #
-  #           And builds CSS with Dart Sass via [scss-utilities/gha-sass](https://github.com/scss-utilities/gha-sass)
+      # - name: Open Pull Request
+      #   uses: peter-evans/create-pull-request@v1.5.0
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     COMMIT_MESSAGE: Compiles CSS from SCSS files
+      #     PULL_REQUEST_BODY: >
+      #       This pull request was auto-generated thanks to [create-pull-request](https://github.com/peter-evans/create-pull-request)
+      #
+      #       And builds Pages with Jekyll via [scss-utilities/gha-sass](https://github.com/gha-utilities/jekyll-build)
 
 ## Thanks_be_to
 ##   - https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions
