@@ -40,6 +40,8 @@ jobs:
       - name: Check that files have been moved
         run: ls -ahl assets
 
+      - run: ls -ahl assets/css
+
       # - name: Check that output has been generated
       #   run: cat assets/css/main.css
 
