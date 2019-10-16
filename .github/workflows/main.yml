@@ -3,42 +3,39 @@ on:
     branches:
       - master
 
+
 jobs:
-  jekyll_build:
+  build_css:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source branch for building Pages
+      - name: Checkout source Git branch
         uses: actions/checkout@v1
         with:
-          ref: master
-          fetch-depth: 10
+            ref: master
+            fetch-depth: 10
+            submodules: true
 
-      - name: Make Jekyll Build destination directory
-        run: mkdir -vp ~/www/gha-tests
+      - name: Make destination directory for compiled CSS
+        run: mkdir -vp /tmp/repo-name/assets/css
 
-      - name: Jekyll Build
-        uses: gha-utilities/jekyll-build@master
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@master
         with:
-          # jekyll_github_token: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
-          source: ./jekyll-docs
-          destination: ~/www/gha-tests
+          source: _scss/main.scss
+          destination: /tmp/repo-name/assets/css/main.css
 
-      - name: Check if anything was built
-        run: ls -ahl ~/www/gha-tests
-
-      - name: Checkout branch for GitHub Pages
+      - name: Checkout destination Git branch
         uses: actions/checkout@v1
         with:
-          ref: gh-pages
-          fetch-depth: 1
-          submodules: true
+            ref: gh-pages
+            fetch-depth: 1
 
-      - name: Copy built site files into Git branch
-        run: cp -r ~/www/gha-tests ./
+      - name: Move compiled CSS to path within target branch
+        run: mv /tmp/repo-name/assets/css assets/
 
-      - name: Check if build processes generated anything
-        run: ls -ahl ./
+      - name: Check that output has been generated
+        run: cat assets/css/main.css
 
       # - name: Open Pull Request
       #   uses: peter-evans/create-pull-request@v1.5.0
@@ -48,7 +45,8 @@ jobs:
       #     PULL_REQUEST_BODY: >
       #       This pull request was auto-generated thanks to [create-pull-request](https://github.com/peter-evans/create-pull-request)
       #
-      #       And builds Pages with Jekyll via [scss-utilities/gha-sass](https://github.com/gha-utilities/jekyll-build)
+      #       And builds CSS with Dart Sass via [gha-utilities/sass-build](https://github.com/gha-utilities/sass-build)
+
 
 ## Thanks_be_to
 ##   - https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions
