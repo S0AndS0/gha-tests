@@ -31,11 +31,17 @@ jobs:
             ref: gh-pages
             fetch-depth: 1
 
+      - name: Make destination directory if not already present
+        run: mkdir -vp assets
+
       - name: Move compiled CSS to path within target branch
         run: mv /tmp/repo-name/assets/css assets/
 
-      - name: Check that output has been generated
-        run: cat assets/css/main.css
+      - name: Check that files have been moved
+        run: ls -ahl assets
+
+      # - name: Check that output has been generated
+      #   run: cat assets/css/main.css
 
       # - name: Open Pull Request
       #   uses: peter-evans/create-pull-request@v1.5.0
