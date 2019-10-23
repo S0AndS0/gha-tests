@@ -1,0 +1,26 @@
+on:
+  push:
+    branches:
+      - pr-test
+
+
+jobs:
+  jekyll_build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout pr-test branch
+        uses: actions/checkout@v1
+        with:
+          ref: pr-test
+          fetch-depth: 10
+
+      - name: Initialize Pull Request
+        uses: gha-utilities/init-pull-request@v0.0.1
+        with:
+          pull_request_token: ${{ secrets.GITHUB_TOKEN }}
+          head: pr-test
+          base: master
+          title: 'Test of init-pull-request Action'
+          body: >
+            Do not accept this request; it is only a test!

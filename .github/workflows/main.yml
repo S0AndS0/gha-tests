@@ -1,61 +1,61 @@
-on:
-  push:
-    branches:
-      - master
-
-
-jobs:
-  build_css:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout source Git branch
-        uses: actions/checkout@v1
-        with:
-            ref: master
-            fetch-depth: 10
-            submodules: true
-
-      - name: Make destination directory for compiled CSS
-        run: mkdir -vp /tmp/repo-name/assets/css
-
-      - name: Compile CSS from SCSS files
-        uses: gha-utilities/sass-build@master
-        with:
-          source: _scss/main.scss
-          destination: /tmp/repo-name/assets/css/main.css
-
-      - name: Checkout destination Git branch
-        uses: actions/checkout@v1
-        with:
-            ref: gh-pages
-            fetch-depth: 1
-
-      - name: Make destination directory if not already present
-        run: mkdir -vp assets
-
-      - name: Move compiled CSS to path within target branch
-        run: mv /tmp/repo-name/assets/css assets/
-
-      - name: Check that directories have been moved
-        run: ls -ahl assets
-
-      - name: Check that file has been moved
-        run: ls -ahl assets/css
-
-      - name: Check that output has been generated
-        run: cat assets/css/main.css
-
-      # - name: Open Pull Request
-      #   uses: peter-evans/create-pull-request@v1.5.0
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     COMMIT_MESSAGE: Compiles CSS from SCSS files
-      #     PULL_REQUEST_BODY: >
-      #       This pull request was auto-generated thanks to [create-pull-request](https://github.com/peter-evans/create-pull-request)
-      #
-      #       And builds CSS with Dart Sass via [gha-utilities/sass-build](https://github.com/gha-utilities/sass-build)
-
+# on:
+#   push:
+#     branches:
+#       - master
+#
+#
+# jobs:
+#   build_css:
+#     runs-on: ubuntu-latest
+#
+#     steps:
+#       - name: Checkout source Git branch
+#         uses: actions/checkout@v1
+#         with:
+#             ref: master
+#             fetch-depth: 10
+#             submodules: true
+#
+#       - name: Make destination directory for compiled CSS
+#         run: mkdir -vp /tmp/repo-name/assets/css
+#
+#       - name: Compile CSS from SCSS files
+#         uses: gha-utilities/sass-build@master
+#         with:
+#           source: _scss/main.scss
+#           destination: /tmp/repo-name/assets/css/main.css
+#
+#       - name: Checkout destination Git branch
+#         uses: actions/checkout@v1
+#         with:
+#             ref: gh-pages
+#             fetch-depth: 1
+#
+#       - name: Make destination directory if not already present
+#         run: mkdir -vp assets
+#
+#       - name: Move compiled CSS to path within target branch
+#         run: mv /tmp/repo-name/assets/css assets/
+#
+#       - name: Check that directories have been moved
+#         run: ls -ahl assets
+#
+#       - name: Check that file has been moved
+#         run: ls -ahl assets/css
+#
+#       - name: Check that output has been generated
+#         run: cat assets/css/main.css
+#
+#       # - name: Open Pull Request
+#       #   uses: peter-evans/create-pull-request@v1.5.0
+#       #   env:
+#       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       #     COMMIT_MESSAGE: Compiles CSS from SCSS files
+#       #     PULL_REQUEST_BODY: >
+#       #       This pull request was auto-generated thanks to [create-pull-request](https://github.com/peter-evans/create-pull-request)
+#       #
+#       #       And builds CSS with Dart Sass via [gha-utilities/sass-build](https://github.com/gha-utilities/sass-build)
+#
 
 ## Thanks_be_to
 ##   - https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions
